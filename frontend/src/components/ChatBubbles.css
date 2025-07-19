@@ -1,0 +1,242 @@
+.chat-bubbles-container {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  min-height: 60vh;
+  overflow: hidden;
+}
+
+.chat-area {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.chat-bubble {
+  position: relative;
+  max-width: 70%;
+  padding: 1rem 1.5rem;
+  border-radius: 20px;
+  backdrop-filter: blur(15px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  animation: bubbleSlideIn 0.6s ease-out both;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.chat-bubble:hover {
+  transform: translateY(-5px) scale(1.02);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes bubbleSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.bubble-gauri {
+  align-self: flex-start;
+  background: linear-gradient(135deg, 
+    rgba(255, 107, 157, 0.9) 0%, 
+    rgba(255, 107, 157, 0.7) 100%);
+  border-left: 4px solid #ff6b9d;
+}
+
+.bubble-prasad {
+  align-self: flex-end;
+  background: linear-gradient(135deg, 
+    rgba(18, 194, 233, 0.9) 0%, 
+    rgba(18, 194, 233, 0.7) 100%);
+  border-right: 4px solid #12c2e9;
+}
+
+.bubble-jathin {
+  align-self: center;
+  background: linear-gradient(135deg, 
+    rgba(196, 113, 237, 0.9) 0%, 
+    rgba(196, 113, 237, 0.7) 100%);
+  border: 2px solid rgba(196, 113, 237, 0.8);
+  text-align: center;
+}
+
+.sender-name {
+  font-family: 'Poppins', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 0.3rem;
+  display: block;
+}
+
+.bubble-text {
+  font-family: 'Pacifico', cursive;
+  font-size: clamp(0.9rem, 2.5vw, 1.2rem);
+  color: #ffffff;
+  line-height: 1.4;
+  margin: 0;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.bubble-tail {
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-style: solid;
+}
+
+.bubble-gauri .bubble-tail {
+  left: -10px;
+  bottom: 20px;
+  border-width: 0 15px 15px 0;
+  border-color: transparent rgba(255, 107, 157, 0.9) transparent transparent;
+}
+
+.bubble-prasad .bubble-tail {
+  right: -10px;
+  bottom: 20px;
+  border-width: 15px 15px 0 0;
+  border-color: rgba(18, 194, 233, 0.9) transparent transparent transparent;
+}
+
+.bubble-jathin .bubble-tail {
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 15px 10px 0 10px;
+  border-color: rgba(196, 113, 237, 0.9) transparent transparent transparent;
+}
+
+.floating-emojis {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.floating-emoji {
+  position: absolute;
+  font-size: 1.5rem;
+  animation: float 6s ease-in-out infinite;
+  opacity: 0.6;
+}
+
+.floating-emoji:nth-child(1) {
+  top: 10%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.floating-emoji:nth-child(2) {
+  top: 20%;
+  right: 15%;
+  animation-delay: 1.5s;
+}
+
+.floating-emoji:nth-child(3) {
+  bottom: 30%;
+  left: 20%;
+  animation-delay: 3s;
+}
+
+.floating-emoji:nth-child(4) {
+  bottom: 15%;
+  right: 10%;
+  animation-delay: 4.5s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.6;
+  }
+  25% {
+    transform: translateY(-20px) rotate(5deg);
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(-10px) rotate(-3deg);
+    opacity: 1;
+  }
+  75% {
+    transform: translateY(-15px) rotate(2deg);
+    opacity: 0.7;
+  }
+}
+
+/* Typing indicator effect */
+.chat-bubble.typing::after {
+  content: '';
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.8);
+  margin-left: 0.5rem;
+  animation: typing 1.5s ease-in-out infinite;
+}
+
+@keyframes typing {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .chat-bubbles-container {
+    padding: 1.5rem 1rem;
+    min-height: 50vh;
+  }
+  
+  .chat-bubble {
+    max-width: 85%;
+    padding: 0.8rem 1.2rem;
+    border-radius: 18px;
+  }
+  
+  .bubble-text {
+    font-size: clamp(0.8rem, 3vw, 1rem);
+  }
+  
+  .floating-emoji {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .chat-bubbles-container {
+    padding: 1rem 0.5rem;
+  }
+  
+  .chat-bubble {
+    max-width: 90%;
+    padding: 0.7rem 1rem;
+  }
+  
+  .sender-name {
+    font-size: 0.6rem;
+  }
+  
+  .floating-emoji {
+    font-size: 1rem;
+  }
+}
