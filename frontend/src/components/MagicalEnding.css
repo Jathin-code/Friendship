@@ -1,0 +1,319 @@
+.magical-ending-container {
+  position: relative;
+  width: 100%;
+  min-height: 80vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.magical-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.ending-content {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.typing-message {
+  font-family: 'Pacifico', cursive;
+  font-size: clamp(1.2rem, 4vw, 2.2rem);
+  color: #ffffff;
+  line-height: 1.6;
+  margin-bottom: 3rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  backdrop-filter: blur(15px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+.typing-message::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #ff6b9d, #c471ed, #12c2e9, #ff6b9d);
+  background-size: 300% 300%;
+  border-radius: 22px;
+  z-index: -1;
+  animation: borderShine 4s ease-in-out infinite;
+}
+
+@keyframes borderShine {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.cursor {
+  opacity: 1;
+  animation: blink 1s infinite;
+  color: #ff6b9d;
+  font-weight: bold;
+  margin-left: 0.1rem;
+}
+
+@keyframes blink {
+  0%, 50% {
+    opacity: 1;
+  }
+  51%, 100% {
+    opacity: 0;
+  }
+}
+
+.surprise-button {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(1rem, 3vw, 1.3rem);
+  font-weight: 700;
+  padding: 1.2rem 3rem;
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(45deg, #ff6b9d, #c471ed, #12c2e9);
+  background-size: 200% 200%;
+  color: #ffffff;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 15px 40px rgba(255, 107, 157, 0.4);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  animation: surpriseButtonGlow 3s ease-in-out infinite;
+  position: relative;
+  overflow: hidden;
+}
+
+@keyframes surpriseButtonGlow {
+  0%, 100% {
+    background-position: 0% 50%;
+    transform: scale(1);
+  }
+  50% {
+    background-position: 100% 50%;
+    transform: scale(1.05);
+  }
+}
+
+.surprise-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.6s ease;
+}
+
+.surprise-button:hover::before {
+  left: 100%;
+}
+
+.surprise-button:hover {
+  transform: translateY(-5px) scale(1.1);
+  box-shadow: 0 20px 50px rgba(255, 107, 157, 0.6);
+}
+
+.surprise-button:active {
+  transform: translateY(-2px) scale(1.05);
+}
+
+.celebration-message {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(1.5rem, 5vw, 3rem);
+  font-weight: 900;
+  background: linear-gradient(45deg, #ff6b9d, #c471ed, #12c2e9, #ff6b9d);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: celebrationPulse 2s ease-in-out infinite, gradientFlow 4s ease-in-out infinite;
+  margin-top: 2rem;
+  text-shadow: 0 0 30px rgba(255, 107, 157, 0.5);
+}
+
+@keyframes celebrationPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+@keyframes gradientFlow {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.floating-hearts {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 5;
+}
+
+.floating-heart {
+  position: absolute;
+  font-size: 2rem;
+  animation: floatHeart 8s ease-in-out infinite;
+  opacity: 0.6;
+}
+
+.floating-heart:nth-child(1) {
+  top: 10%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.floating-heart:nth-child(2) {
+  top: 20%;
+  right: 15%;
+  animation-delay: 2s;
+}
+
+.floating-heart:nth-child(3) {
+  bottom: 30%;
+  left: 20%;
+  animation-delay: 4s;
+}
+
+.floating-heart:nth-child(4) {
+  bottom: 15%;
+  right: 10%;
+  animation-delay: 6s;
+}
+
+@keyframes floatHeart {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg) scale(1);
+    opacity: 0.6;
+  }
+  25% {
+    transform: translateY(-30px) rotate(10deg) scale(1.2);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translateY(-20px) rotate(-5deg) scale(1.1);
+    opacity: 1;
+  }
+  75% {
+    transform: translateY(-40px) rotate(15deg) scale(1.3);
+    opacity: 0.8;
+  }
+}
+
+/* Magical particle effects */
+.magical-ending-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(2px 2px at 10% 20%, rgba(255, 107, 157, 0.4), transparent),
+    radial-gradient(2px 2px at 30% 60%, rgba(196, 113, 237, 0.3), transparent),
+    radial-gradient(1px 1px at 60% 30%, rgba(18, 194, 233, 0.4), transparent),
+    radial-gradient(1px 1px at 80% 70%, rgba(255, 215, 0, 0.3), transparent),
+    radial-gradient(2px 2px at 40% 80%, rgba(255, 107, 157, 0.3), transparent);
+  background-repeat: repeat;
+  background-size: 200px 200px;
+  pointer-events: none;
+  animation: magicalSparkle 12s ease-in-out infinite;
+  z-index: 2;
+}
+
+@keyframes magicalSparkle {
+  0%, 100% {
+    transform: translateX(0) translateY(0) rotate(0deg);
+    opacity: 0.4;
+  }
+  25% {
+    transform: translateX(20px) translateY(-15px) rotate(90deg);
+    opacity: 0.7;
+  }
+  50% {
+    transform: translateX(-10px) translateY(25px) rotate(180deg);
+    opacity: 0.5;
+  }
+  75% {
+    transform: translateX(30px) translateY(10px) rotate(270deg);
+    opacity: 0.8;
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .magical-ending-container {
+    min-height: 70vh;
+    padding: 1.5rem 1rem;
+  }
+  
+  .typing-message {
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    border-radius: 15px;
+  }
+  
+  .surprise-button {
+    padding: 1rem 2rem;
+    font-size: clamp(0.9rem, 4vw, 1.1rem);
+  }
+  
+  .floating-heart {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .magical-ending-container {
+    min-height: 60vh;
+    padding: 1rem 0.5rem;
+  }
+  
+  .typing-message {
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  
+  .surprise-button {
+    padding: 0.8rem 1.5rem;
+    border-radius: 30px;
+  }
+  
+  .floating-heart {
+    font-size: 1.2rem;
+  }
+  
+  .celebration-message {
+    margin-top: 1.5rem;
+  }
+}
